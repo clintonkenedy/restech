@@ -12,20 +12,18 @@
     <div class="table-responsive">
         <table id="pendientes" class="table table-striped mt-2">
             <thead>
-            <th>DNI</th>
-            <th>CELULAR</th>
-            <th>INCIDENCIA</th>
-            <th>OFICINA</th>
+            <th>PLATO</th>
+            <th>MESA</th>
+            <th># Factura</th>
             <th>ESTADO</th>
             <th>ACCIONES</th>
             </thead>
             <tbody>
-            {{-- @foreach ($tickets as $ticket)
+            @foreach ($tickets as $ticket)
                 <tr class="">
-                    <td>{{$ticket->persona->dni}}</td>
-                    <td>{{$ticket->persona->celular}}</td>
-                    <td>{{$ticket->incidencia}}</td>
-                    <td>{{$ticket->oficina->nombre_oficina}}</td>
+                    <td>{{$ticket->plato->nombre}}</td>
+                    <td>{{$ticket->mesa->numero}}</td>
+                    <td> #1231232 </td>
                     <td><h5><span class="badge bg-warning"> {{$ticket->estado}} </span></h5></td>
                     <td>
                         <a href="{{route('tickets.edit', $ticket->id)}}" class="btn btn-primary">Editar</a>
@@ -36,23 +34,7 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach --}}
-
-            <tr class="">
-                <td>12345678</td>
-                <td>987654321</td>
-                <td>PRUEBA</td>
-                <td>ALCALDIA</td>
-                <td><h5><span class="badge bg-warning"> Pendiente </span></h5></td>
-                <td>
-                    <a href="#" class="btn btn-primary">Editar</a>
-                    <form action="#" method="post" style="display:inline">
-                        @method('DELETE')
-                        @csrf
-                        <button class="btn btn-danger">Borrar</button>
-                    </form>
-                </td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>

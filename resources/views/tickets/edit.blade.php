@@ -23,29 +23,22 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="dni" class="form-label">
-                                    Número de DNI:
+                                    Plato:
                                     <span style="color: red;">*</span>
                                 </label>
-                                <input type="text" class="form-control" value="{{$ticket->persona->dni}}" name="dni">
+                                <input type="text" class="form-control" value="{{$ticket->plato->nombre}}" name="dni">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="celular" class="form-label">
-                                    Celular:
+                                    Mesa:
                                     <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" value="{{$ticket->persona->celular}}" name="celular">
+                                <input type="text" class="form-control" value="{{$ticket->mesa->numero}}" name="celular">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="incidencia" class="form-label">
-                                    Incidencia:
+                                    # Factura:
                                     <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" value="{{$ticket->incidencia}}" name="incidencia">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="oficina" class="form-label">
-                                    Oficina:
-                                    <span style="color: red;">*</span>
-                                </label>
-                                <input type="text" class="form-control" value="{{$ticket->oficina->nombre_oficina}}" name="oficina">
+                                <input type="text" class="form-control" value="" name="incidencia" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="estado" class="form-label">
@@ -53,9 +46,9 @@
                                     <span style="color: red;">*</span>
                                 </label>
                                 <select id="" class="form-control" name="estado">
-                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="En espera">En espera</option>
                                     <option value="Cancelado">Cancelado</option>
-                                    <option value="Solucionado">Solucionado</option>
+                                    <option value="Listo">Listo</option>
                                 </select>
                             </div>
 

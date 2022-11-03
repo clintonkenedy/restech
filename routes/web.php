@@ -37,7 +37,7 @@ Route::middleware([
 
     Route::get('/tickets/pendientes', [TicketController::class, 'ticketsPendientes'])->name('tickets.pendientes');
 
-    Route::get('/tickets/solucionados', [TicketController::class, 'ticketsSolucionado'])->name('tickets.solucionados');
+    Route::get('/tickets/listos', [TicketController::class, 'ticketsSolucionado'])->name('tickets.solucionados');
 
     Route::get('/tickets/cancelados', [TicketController::class, 'ticketsCancelado'])->name('tickets.cancelados');
 

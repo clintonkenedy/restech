@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('plato_id')->constrained();
             $table->foreignId('mesa_id')->constrained();
-            $table->foreignId('factura_id')->constrained();
-            $table->enum('estado',['En espera','Listo']);
+            $table->foreignId('factura_id')->nullable();
+            $table->enum('estado',['En espera','Listo','Cancelado'])->default('En espera');
             $table->timestamps();
         });
     }

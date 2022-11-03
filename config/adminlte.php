@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>ResTech</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'img/restech.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -294,8 +294,13 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
+        // [
+        //     'type'         => 'button',
+        //     'text'         => 'Nuevo Pedido',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -369,9 +374,9 @@ return [
         // ],
         ['header' => 'TICKETS'],
         [
-            'text'       => 'Completado',
+            'text'       => 'Listos',
             'icon_color' => 'green',
-            'url'        => '#',
+            'url'        => 'tickets/listos',
         ],
         [
             'text'       => 'En espera',
@@ -381,7 +386,7 @@ return [
         [
             'text'       => 'Cancelado',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url'        => 'tickets/cancelados',
         ],
     ],
 
@@ -421,11 +426,11 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
@@ -435,7 +440,7 @@ return [
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],

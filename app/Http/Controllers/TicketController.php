@@ -20,14 +20,15 @@ class TicketController extends Controller
 
     public function ticketsPendientes()
     {
-        // $tickets = Ticket::all()->where('estado', 'Pendiente');
-        // return view('tickets.pendientes', compact('tickets'));
-        return view('tickets.pendientes');
+        $tickets = Ticket::all()->where('estado', 'En espera');
+        // dd($tickets);
+        return view('tickets.pendientes', compact('tickets'));
+        // return view('tickets.pendientes');
     }
     public function ticketsSolucionado()
     {
 //        dd('solucionado');
-        $tickets = Ticket::all()->where('estado', 'Solucionado');
+        $tickets = Ticket::all()->where('estado', 'Listo');
         return view('tickets.solucionados', compact('tickets'));
     }
     public function ticketsCancelado()
@@ -76,7 +77,9 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        //        dd($ticket);
+        return view('tickets.edit', compact('ticket'));
     }
 
     /**
@@ -88,7 +91,14 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ticket = Ticket::find($id);
+        $ticket->persona->dni = $request->input('dni');
+        $ticket->incidencia = $request->input('incidencia');
+        $ticket->oficina->nombre_oficina = $request->input('oficina');
+        $ticket->estado = $request->input('estado');
+        $ticket->save();
+
+        return redirect()->route('tickets.pendientes');
     }
 
     /**
