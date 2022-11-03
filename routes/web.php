@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,21 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
+    //CHANGE PASSWORD
+    Route::get('/password/edit', [UserController::class, 'edit_pass'])->name('password.edit');
+    Route::post('/password/update', [UserController::class, 'update_pass'])->name('password.update');
+
+    ///TICKETS
+
+    Route::get('/tickets/pendientes', [TicketController::class, 'ticketsPendientes'])->name('tickets.pendientes');
+
+    Route::get('/tickets/solucionados', [TicketController::class, 'ticketsSolucionado'])->name('tickets.solucionados');
+
+    Route::get('/tickets/cancelados', [TicketController::class, 'ticketsCancelado'])->name('tickets.cancelados');
+
+    Route::get('/tickets/edit/{id}', [TicketController::class,'edit'])->name('tickets.edit');
+    Route::put('/tickets/update/{ticket}', [TicketController::class,'update'])->name('tickets.update');
+    Route::delete('/tickets/destroy/{id}', [TicketController::class,'destroy'])->name('tickets.destroy');
 });

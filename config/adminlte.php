@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'RESTECH',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>ResTech</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -302,85 +302,85 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Perfil',
+            'url'  => 'profile/edit',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Cambiar contraseña',
+            'url'  => 'password/edit',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
+        ['header' => 'TICKETS'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'Completado',
+            'icon_color' => 'green',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'En espera',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => 'tickets/pendientes',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
+            'text'       => 'Cancelado',
+            'icon_color' => 'red',
             'url'        => '#',
         ],
     ],
