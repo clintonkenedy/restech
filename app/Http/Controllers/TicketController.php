@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\Plato;
+use App\Models\Mesa;
 
 class TicketController extends Controller
 {
@@ -14,24 +16,26 @@ class TicketController extends Controller
      */
     public function index()
     {
-        // $oficinas = Oficina::all();
-        // return view('helpdesk.home', compact('oficinas'));
+        // $tickets = Ticket::all();
+        return view('tickets.base_show');
     }
 
-    public function ticketsPendientes()
+    public function ticketsPendientesList()
     {
         $tickets = Ticket::all()->where('estado', 'En espera');
+        $platos = Plato::all();
+        $mesas = Mesa::all();
         // dd($tickets);
-        return view('tickets.pendientes', compact('tickets'));
+        return view('tickets.pendientes', compact('tickets', 'platos', 'mesas'));
         // return view('tickets.pendientes');
     }
-    public function ticketsSolucionado()
+    public function ticketsSolucionadoList()
     {
 //        dd('solucionado');
         $tickets = Ticket::all()->where('estado', 'Listo');
         return view('tickets.solucionados', compact('tickets'));
     }
-    public function ticketsCancelado()
+    public function ticketsCanceladoList()
     {
         $tickets = Ticket::all()->where('estado', 'Cancelado');
         return view('tickets.cancelados', compact('tickets'));
@@ -55,7 +59,12 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $ticket = new Ticket;
+        $ticket->mesa_id = $request->input('mesa');
+        $ticket->plato_id = $request->input('plato');
+        $ticket->save();
+        return redirect()->route('tickets.pendientes');
     }
 
     /**
@@ -77,9 +86,12 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
+
         $ticket = Ticket::find($id);
+        $platos = Plato::all();
+        $mesas = Mesa::all();
         //        dd($ticket);
-        return view('tickets.edit', compact('ticket'));
+        return view('tickets.edit', compact('ticket', 'platos', 'mesas'));
     }
 
     /**
@@ -91,10 +103,11 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $ticket = Ticket::find($id);
-        $ticket->persona->dni = $request->input('dni');
-        $ticket->incidencia = $request->input('incidencia');
-        $ticket->oficina->nombre_oficina = $request->input('oficina');
+        $ticket->plato->nombre = $request->input('plato');
+        $ticket->mesa->numero = $request->input('mesa');
+        $ticket->factura_id = $request->input('factura');
         $ticket->estado = $request->input('estado');
         $ticket->save();
 

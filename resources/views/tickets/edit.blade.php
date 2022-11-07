@@ -22,23 +22,41 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="dni" class="form-label">
+                                <label for="plato" class="form-label">
                                     Plato:
                                     <span style="color: red;">*</span>
                                 </label>
-                                <input type="text" class="form-control" value="{{$ticket->plato->nombre}}" name="dni">
+                                {{-- <input type="text" class="form-control" value="{{$ticket->plato->nombre}}" name="plato"> --}}
+                                <select name="plato" id="" class="form-control">
+                                    @foreach ($platos as $plato)
+                                        @if ($plato->nombre == $ticket->plato->nombre)
+                                        <option value="{{$plato->id}}" selected>{{$plato->nombre}}</option>
+                                        @else
+                                        <option value="{{$plato->id}}">{{$plato->nombre}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="celular" class="form-label">
+                                <label for="mesa" class="form-label">
                                     Mesa:
                                     <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" value="{{$ticket->mesa->numero}}" name="celular">
+                                {{-- <input type="text" class="form-control" value="{{$ticket->mesa->numero}}" name="mesa"> --}}
+                                <select name="mesa" id="" class="form-control">
+                                    @foreach ($mesas as $mesa)
+                                        @if ($mesa->numero == $ticket->mesa->numero)
+                                        <option value="{{$mesa->id}}" selected>{{$mesa->numero}}</option>
+                                        @else
+                                        <option value="{{$mesa->id}}">{{$mesa->numero}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="incidencia" class="form-label">
+                                <label for="factura" class="form-label">
                                     # Factura:
                                     <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" value="" name="incidencia" readonly>
+                                <input type="text" class="form-control" value="" name="factura" readonly>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="estado" class="form-label">
@@ -54,7 +72,7 @@
 
                         </div>
                         <center>
-                            <a href="../pendientes" class="btn btn-danger">Cancelar</a>
+                            <a href="../pendientes/list" class="btn btn-danger">Cancelar</a>
                             <button class="btn btn-primary">Confirmar</button>
                         </center>
                         </form>

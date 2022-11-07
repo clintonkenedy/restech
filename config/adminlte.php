@@ -376,17 +376,17 @@ return [
         [
             'text'       => 'Listos',
             'icon_color' => 'green',
-            'url'        => 'tickets/listos',
+            'url'        => 'tickets/listos/list',
         ],
         [
             'text'       => 'En espera',
             'icon_color' => 'yellow',
-            'url'        => 'tickets/pendientes',
+            'url'        => 'tickets/pendientes/list',
         ],
         [
             'text'       => 'Cancelado',
             'icon_color' => 'red',
-            'url'        => 'tickets/cancelados',
+            'url'        => 'tickets/cancelados/list',
         ],
     ],
 
@@ -542,5 +542,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
