@@ -35,11 +35,14 @@ Route::middleware([
 
     ///TICKETS
 
-    Route::get('/tickets/pendientes', [TicketController::class, 'ticketsPendientes'])->name('tickets.pendientes');
+    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
+    Route::post('/tickets/store', [TicketController::class, 'store'])->name('tickets.store');
 
-    Route::get('/tickets/listos', [TicketController::class, 'ticketsSolucionado'])->name('tickets.solucionados');
+    Route::get('/tickets/pendientes/list', [TicketController::class, 'ticketsPendientesList'])->name('tickets.pendientes');
 
-    Route::get('/tickets/cancelados', [TicketController::class, 'ticketsCancelado'])->name('tickets.cancelados');
+    Route::get('/tickets/listos/list', [TicketController::class, 'ticketsSolucionadoList'])->name('tickets.solucionados');
+
+    Route::get('/tickets/cancelados/list', [TicketController::class, 'ticketsCanceladoList'])->name('tickets.cancelados');
 
     Route::get('/tickets/edit/{id}', [TicketController::class,'edit'])->name('tickets.edit');
     Route::put('/tickets/update/{ticket}', [TicketController::class,'update'])->name('tickets.update');

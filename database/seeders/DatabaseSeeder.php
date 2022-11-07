@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlatoSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(MesaSeeder::class);
+        $this->call(TicketSeeder::class);
     }
 }
