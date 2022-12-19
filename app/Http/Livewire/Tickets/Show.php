@@ -18,7 +18,7 @@ class Show extends Component
         // return view('livewire.tickets.show');
 
         return view('livewire.tickets.show', [
-            'tickets' => \App\Models\Ticket::all()->where('estado', 'En espera')
+            'tickets' => \App\Models\Ticket::orderBy('estado','asc')->where('estado', '!=', 'Cancelado')->get()
         ]);
     }
 }

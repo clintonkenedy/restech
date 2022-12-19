@@ -36,6 +36,10 @@ Route::middleware([
     ///TICKETS
 
     Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
+    Route::post('/tickets/listo/{id}', [TicketController::class, 'ticket_listo'])->name('tickets.ticket_listo');
+    Route::post('/tickets/cancelado/{id}', [TicketController::class, 'ticket_cancelado'])->name('tickets.ticket_cancelado');
+
+
     Route::post('/tickets/store', [TicketController::class, 'store'])->name('tickets.store');
 
     Route::get('/tickets/pendientes/list', [TicketController::class, 'ticketsPendientesList'])->name('tickets.pendientes');

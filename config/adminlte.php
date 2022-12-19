@@ -374,20 +374,32 @@ return [
         // ],
         ['header' => 'TICKETS'],
         [
-            'text'       => 'Listos',
-            'icon_color' => 'green',
-            'url'        => 'tickets/listos/list',
+            'text'       => 'Ver Tickets',
+            'url'        => 'tickets',
+            'icon'       => 'fa fa-fw fa-ticket',
         ],
         [
-            'text'       => 'En espera',
-            'icon_color' => 'yellow',
-            'url'        => 'tickets/pendientes/list',
+            'text'    => 'Administrar Tickets',
+            'icon'    => 'fas fa-fw fa-cog',
+            'submenu' => [
+                [
+                    'text'       => 'Listos',
+                    'icon_color' => 'green',
+                    'url'        => 'tickets/listos/list',
+                ],
+                [
+                    'text'       => 'En espera',
+                    'icon_color' => 'yellow',
+                    'url'        => 'tickets/pendientes/list',
+                ],
+                [
+                    'text'       => 'Cancelado',
+                    'icon_color' => 'red',
+                    'url'        => 'tickets/cancelados/list',
+                ],
+            ]
         ],
-        [
-            'text'       => 'Cancelado',
-            'icon_color' => 'red',
-            'url'        => 'tickets/cancelados/list',
-        ],
+
     ],
 
     /*
@@ -492,6 +504,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'iconos' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//use.fontawesome.com/88fa64dde2.js',
                 ],
             ],
         ],

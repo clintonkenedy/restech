@@ -20,6 +20,26 @@ class TicketController extends Controller
         return view('tickets.base_show');
     }
 
+    public function ticket_listo(Request $request, $id)
+    {
+        // dd($request->all());
+        $ticket = Ticket::find($id);
+        $ticket->estado = "Listo";
+        $ticket->save();
+
+        return redirect()->route('tickets');
+    }
+
+    public function ticket_cancelado(Request $request, $id)
+    {
+        // dd($request->all());
+        $ticket = Ticket::find($id);
+        $ticket->estado = "Cancelado";
+        $ticket->save();
+
+        return redirect()->route('tickets');
+    }
+
     public function ticketsPendientesList()
     {
         $tickets = Ticket::all()->where('estado', 'En espera');
