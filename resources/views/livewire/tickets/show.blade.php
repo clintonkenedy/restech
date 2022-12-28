@@ -12,14 +12,16 @@
                 </div>
                 <div class="card-footer" >
                     <div style="display: flex; justify-content: space-between;">
-                        <form action="{{ route("tickets.ticket_cancelado", $ticket->id )}}" method="post">
+                        {{-- <form action="{{ route("tickets.ticket_cancelado", $ticket->id )}}" method="post">
                             @csrf
                             <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                        </form>
-                        <form action="{{ route("tickets.ticket_listo", $ticket->id )}}" method="post">
+                        </form> --}}
+                        <button class="btn btn-danger" wire:click="ticket_cancelado({{$ticket}})"><i class="fas fa-trash"></i></button>
+                        {{-- <form action="{{ route("tickets.ticket_listo", $ticket->id )}}" method="post">
                             @csrf
                             <button class="btn btn-success"><i class="fas fa-check"></i></button>
-                        </form>
+                        </form> --}}
+                        <button class="btn btn-success" wire:click="ticket_listo({{$ticket}})"><i class="fas fa-check"></i></button>
                     </div>
                 </div>
                 </div>
@@ -28,7 +30,9 @@
             <div class="card text-white bg-success m-3" style="width: 14rem;">
                 <div class="card-header">{{ 'Pedido #'.$ticket->id }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">{{$ticket->plato->nombre}}</h5>
+                        <h4 class="card-title">
+                            <b>{{$ticket->plato->nombre}}</b>
+                        </h4>
                         <p class="card-text">Mesa N° {{$ticket->mesa->numero}}</p>
                     </div>
                     <div class="card-footer" >
@@ -36,20 +40,6 @@
                             <button class="btn btn-primary"><i class="fas fa-bell"></i></button>
                         </center>
                     </div>
-                </div>
-            @endif
-            @if ($ticket->estado == "Cancelado")
-            <div class="card text-white bg-danger mb-3" style="max-width: 14rem;">
-                <div class="card-header">{{ '#'.$ticket->id }}</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{$ticket->plato->nombre}}</h5>
-                    <p class="card-text">Mesa N° {{$ticket->mesa->numero}}</p>
-                </div>
-                <div class="card-footer" >
-                    <div style="display: flex; justify-content: space-between;">
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
                 </div>
             @endif
     @endforeach
