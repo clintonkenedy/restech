@@ -15,6 +15,17 @@ use App\Http\Controllers\TicketController;
 |
 */
 
+Route::get('/chat', function () {
+    event(new \App\Events\PublicMessage());
+    // dd('Public event executed successfully');
+});
+
+Route::get('/private-chat', function () {
+    event(new \App\Events\PrivateMessage(auth()->user()));
+    // dd('Private event executed successfully');
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
