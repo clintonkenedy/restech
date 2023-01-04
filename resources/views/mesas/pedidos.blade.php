@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <a href="./" class="btn btn-lg btn-danger">Cancelar</a>
+                    <a href="/mesas" class="btn btn-lg btn-danger">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success float-right">Crear</button>
                 </form>
             </div>

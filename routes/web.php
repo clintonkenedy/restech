@@ -20,8 +20,9 @@ use App\Http\Controllers\FacturaController;
 
 Route::get('/menu', [PlatoController::class, 'menu'])->name('menu');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [PlatoController::class, 'menu'])->name('menu');
+Route::get('/register', function () {
+    return redirect('/login');
 });
 Route::middleware([
     'auth:sanctum',

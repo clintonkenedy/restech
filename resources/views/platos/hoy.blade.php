@@ -11,6 +11,14 @@
     <title>MENU DEL DIA</title>
   </head>
   <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+        <img src="/img/restech.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        RestTech
+        </a>
+        <p class="inline mr-sm-2">Bienvenido a ResTech</p>
+    </nav>
     <div class="container">
         <center>
             <h2 class="mt-5">MENU DEL DÍA</h2>
