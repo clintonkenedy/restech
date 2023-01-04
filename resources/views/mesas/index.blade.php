@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-3">
         <div class="float-right">
-            <a href="{{route('platos.create')}}" class="btn btn-lg btn-success">
+            <a href="{{route('mesas.create')}}" class="btn btn-lg btn-success">
                 Registrar Nuevo Mesa
             </a>
         </div>
@@ -25,21 +25,53 @@
 <div>
     <div style="display: flex; flex-wrap: wrap; justify-content: start; ">
         @foreach ($mesas as $mesa)
-            <div class="card text-white bg-warning m-3" style="width: 14rem;">
-                <div class="card-header h4">{{ 'Mesa #'.$mesa->numero }}</div>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        {{-- <b>{{$mesa->numero}}</b> --}}
-                        <p>Estado <b>{{$mesa->estado}}</b></p>
-                    </h4>
-                </div>
-                <div class="card-footer" >
-                    <div style="display: flex; justify-content: space-between;">
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                        <a href="{{route('mesas.pedidos', $mesa)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                    </div>
+        @if ($mesa->estado == 'Ocupado')
+        <div class="card text-white bg-warning m-3" style="width: 14rem;">
+            <div class="card-header h4">{{ 'Mesa #'.$mesa->numero }}</div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{-- <b>{{$mesa->numero}}</b> --}}
+                    <p>Estado <b>{{$mesa->estado}}</b></p>
+                </h4>
+            </div>
+        </div>
+        @endif
+        @if ($mesa->estado == 'Disponible')
+        <div class="card text-white bg-success m-3" style="width: 14rem;">
+            <div class="card-header h4">{{ 'Mesa #'.$mesa->numero }}</div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{-- <b>{{$mesa->numero}}</b> --}}
+                    <p>Estado <b>{{$mesa->estado}}</b></p>
+                </h4>
+            </div>
+            <div class="card-footer" >
+                <div style="display: flex; justify-content: space-between;">
+                    {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                    <a href="{{route('mesas.suspender', $mesa)}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    <a href="{{route('mesas.pedidos', $mesa)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                 </div>
             </div>
+        </div>
+        @endif
+        @if ($mesa->estado == 'Suspendido')
+        <div class="card text-white bg-danger m-3" style="width: 14rem;">
+            <div class="card-header h4">{{ 'Mesa #'.$mesa->numero }}</div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{-- <b>{{$mesa->numero}}</b> --}}
+                    <p>Estado <b>{{$mesa->estado}}</b></p>
+                </h4>
+            </div>
+            <div class="card-footer" >
+                <div style="display: flex; justify-content: end;">
+                    {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                    <a href="{{route('mesas.activar', $mesa)}}" class="btn btn-primary"><i class="fas fa-check"></i></a>
+                </div>
+            </div>
+        </div>
+        @endif
+
     @endforeach
     </div>
 </div>

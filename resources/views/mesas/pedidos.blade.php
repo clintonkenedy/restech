@@ -5,7 +5,7 @@
 
 @section('content_header')
 <center>
-    <h2>PEDIDOS MESA N°: {{$mesa->numero}}</h2>
+    <h2>PEDIDOS MESA N°: <b>{{$mesa->numero}}</b></h2>
 </center>
 @stop
 
@@ -18,16 +18,34 @@
                 <form action="{{route('mesas.pedido_store', $mesa)}}" method="get">
                     @csrf
                     <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="form-group form-group-lg">
+                        <div class="col-md-10">
                                 <h4>PLATOS</h4>
+                                <b class="">Se muestra Platos del día:</b>
+                                @php
+                                    $i = 0;
+                                @endphp
                                 @foreach ($platos as $plato)
-                                <div class="form-check ml-5 mb-3">
-                                    <input class="form-check-input" value="{{$plato->id}}"  type="checkbox" id="defaultCheck1" name="pedidos[]">
-                                    <label class="form-check-label" for="defaultCheck1">{{$plato->nombre}}</label>
+
+                                <div class="form-check ml-5 mb-3 mt-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="apellido_paterno" class="form-label">
+                                                {{$plato->nombre}}
+                                            <div class="input-group mb-3" style="width: 120px">
+                                                <input type="text" class="form-control" name='pedidos[{{$i}}][cantidad]'>
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox" aria-label="Checkbox para pedidos" value="{{$plato->id}}" name='pedidos[{{$i}}][plato]'>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                @php
+                                    $i++;
+                                @endphp
                                 @endforeach
-                            </div>
                         </div>
                     </div>
 

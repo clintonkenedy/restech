@@ -372,23 +372,23 @@ return [
         //         ],
         //     ],
         // ],
-        ['header' => 'MENU'],
+        ['header' => 'MENU X DÍA'],
         [
             'text'       => 'Platos',
             'url'        => 'platos',
-            'icon'       => 'fa fa-fw fa-ticket',
+            'icon'       => 'fa fa-fw fa-cutlery',
         ],
         ['header' => 'MESAS'],
         [
-            'text'       => 'Pedidos',
+            'text'       => 'Crear Pedido',
             'url'        => 'mesas',
-            'icon'       => 'fa fa-fw fa-ticket',
+            'icon'       => 'fa fa-fw fa-pencil-square-o',
         ],
-        ['header' => 'FACTURAS'],
+        ['header' => 'CAJA'],
         [
-            'text'       => 'ver Facturas',
+            'text'       => 'Ver Facturas',
             'url'        => 'facturas',
-            'icon'       => 'fa fa-fw fa-ticket',
+            'icon'       => 'fa fa-fw fa-money',
         ],
         ['header' => 'TICKETS'],
         [
@@ -414,6 +414,11 @@ return [
                     'text'       => 'Cancelado',
                     'icon_color' => 'red',
                     'url'        => 'tickets/cancelados/list',
+                ],
+                [
+                    'text'       => 'Pagados',
+                    'icon_color' => 'blue',
+                    'url'        => 'tickets/pagados/list',
                 ],
             ]
         ],
@@ -529,9 +534,9 @@ return [
             'active' => true,
             'files' => [
                 [
-                    'type' => 'css',
+                    'type' => 'js',
                     'asset' => true,
-                    'location' => '//use.fontawesome.com/88fa64dde2.js',
+                    'location' => '//use.fontawesome.com/d865fc5630.js',
                 ],
             ],
         ],

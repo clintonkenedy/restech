@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('dni', 8)->nullable();
             $table->string('nombres')->nullable();
             $table->char('celular', 9)->nullable();
+            $table->enum('estado',['Pendiente','Pagado','Cancelado'])->default('Pendiente');
             $table->timestamps();
         });
     }

@@ -43,6 +43,18 @@ class PlatoController extends Controller
     {
         return view('platos.create');
     }
+    public function suspender(Plato $plato)
+    {
+        $plato->estado = "Suspendido";
+        $plato->save();
+        return redirect('/platos');
+    }
+    public function activar(Plato $plato)
+    {
+        $plato->estado = "Activo";
+        $plato->save();
+        return redirect('/platos');
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Factura;
 use App\Models\Ticket;
+use App\Models\Mesa;
 use Illuminate\Http\Request;
 
 class FacturaController extends Controller
@@ -28,6 +29,36 @@ class FacturaController extends Controller
     public function create()
     {
         //
+    }
+
+    public function pagar(Factura $factura, Request $request)
+    {
+        // dd($request->all());
+        $factura->dni = $request->input('dni');
+        if (strlen($factura->nombres)>1) {
+            $factura->nombres = $request->input('nombres');
+        }
+        if (strlen($factura->celular)>1) {
+            $factura->celular = $request->input('celular');
+        }
+
+
+
+
+        $tickets = Ticket::where("factura_id", $factura->id)->get();
+        foreach ($tickets as $ticket) {
+            $ticket->estado = "Pagado";
+            $ticket->save();
+        }
+
+        $mesa_ocupada = Ticket::where("factura_id", $factura->id)->first();
+        $mesa = Mesa::find($mesa_ocupada->mesa_id);
+        $mesa->estado = "Disponible";
+        $mesa->save();
+        // dd($mesa);
+        $factura->save();
+        // dd($factura);
+        return redirect('/facturas');
     }
 
     /**

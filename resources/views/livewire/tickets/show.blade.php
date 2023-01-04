@@ -6,7 +6,7 @@
                 <div class="card-header h4">{{ 'Pedido #'.$ticket->id }}</div>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <b>{{$ticket->plato->nombre}}</b>
+                        <b>{{$ticket->plato->nombre}} x <span class="badge bg-lightblue" style="font-size: 18px">{{$ticket->cantidad}}</span></b>
                     </h4>
                     <p class="card-text">Mesa N° {{$ticket->mesa->numero}}</p>
                 </div>

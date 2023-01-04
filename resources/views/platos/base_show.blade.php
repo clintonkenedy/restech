@@ -25,7 +25,8 @@
 <div>
     <div style="display: flex; flex-wrap: wrap; justify-content: start; ">
         @foreach ($platos as $plato)
-            <div class="card text-white bg-warning m-3" style="width: 14rem;">
+        @if ($plato->estado == 'Activo')
+            <div class="card text-white bg-success m-3" style="width: 14rem;">
                 <div class="card-header h4">{{ 'Plato #'.$plato->id }}</div>
                 <div class="card-body">
                     <h4 class="card-title">
@@ -35,15 +36,39 @@
                             <input type="date" value="{{$plato->fecha}}" name="fecha" id="fecha" class="form-control" onchange="a_fecha({{$plato->id}}, this.value)">
                         </p>
                         <p>Precio S/ {{$plato->costo}}</p>
+                        <p>Estado: {{$plato->estado}}</p>
                     </h4>
                 </div>
                 <div class="card-footer" >
                     <div style="display: flex; justify-content: space-between;">
-                        <button class="btn btn-danger" wire:click="ticket_cancelado({{$plato}})"><i class="fas fa-trash"></i></button>
+                        {{-- <button class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                        <a href="{{route('platos.suspender', $plato)}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         <a href="{{route('platos.edit', $plato)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                     </div>
                 </div>
             </div>
+        @else
+            <div class="card text-white bg-danger m-3" style="width: 14rem;">
+                <div class="card-header h4">{{ 'Plato #'.$plato->id }}</div>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <b>{{$plato->nombre}}</b>
+                        <p class="text-right">
+                            <br>
+                            {{-- <input type="date" value="{{$plato->fecha}}" name="fecha" id="fecha" class="form-control" onchange="a_fecha({{$plato->id}}, this.value)"> --}}
+                        </p>
+                        <p>Precio S/ {{$plato->costo}}</p>
+                        <p>Estado: {{$plato->estado}}</p>
+                    </h4>
+                </div>
+                <div class="card-footer" >
+                    <div style="display: flex; justify-content: end;">
+                        <a href="{{route('platos.activar', $plato)}}" class="btn btn-primary"><i class="fas fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     @endforeach
     </div>
 </div>

@@ -51,6 +51,7 @@ Route::middleware([
     Route::get('/tickets/listos/list', [TicketController::class, 'ticketsSolucionadoList'])->name('tickets.solucionados');
 
     Route::get('/tickets/cancelados/list', [TicketController::class, 'ticketsCanceladoList'])->name('tickets.cancelados');
+    Route::get('/tickets/pagados/list', [TicketController::class, 'ticketsPagadoList'])->name('tickets.pagados');
 
     Route::get('/tickets/edit/{id}', [TicketController::class,'edit'])->name('tickets.edit');
     Route::put('/tickets/update/{ticket}', [TicketController::class,'update'])->name('tickets.update');
@@ -61,16 +62,23 @@ Route::middleware([
     Route::get('/platos/create', [PlatoController::class, 'create'])->name('platos.create');
     Route::get('/platos_fecha', [PlatoController::class, 'fecha'])->name('fecha');
     Route::get('/platos/store', [PlatoController::class, 'store'])->name('platos.store');
+    Route::get('/platos/suspender/{plato}', [PlatoController::class, 'suspender'])->name('platos.suspender');
+    Route::get('/platos/activar/{plato}', [PlatoController::class, 'activar'])->name('platos.activar');
     Route::get('/platos/edit/{plato}', [PlatoController::class, 'edit'])->name('platos.edit');
     Route::put('/platos/update/{plato}', [PlatoController::class, 'update'])->name('platos.update');
 
     // MESAS
     Route::get('/mesas', [MesaController::class, 'index'])->name('mesas');
+    Route::get('/mesas/create', [MesaController::class, 'create'])->name('mesas.create');
+    Route::get('/mesas/store', [MesaController::class, 'store'])->name('mesas.store');
+    Route::get('/mesas/suspender/{mesa}', [MesaController::class, 'suspender'])->name('mesas.suspender');
+    Route::get('/mesas/activar/{mesa}', [MesaController::class, 'activar'])->name('mesas.activar');
     Route::get('/mesa/{mesa}/pedidos', [MesaController::class, 'pedido'])->name('mesas.pedidos');
     Route::get('/mesa/{mesa}/pedidos_store', [MesaController::class, 'pedido_store'])->name('mesas.pedido_store');
 
     // FACTURAS
     Route::get('/facturas', [FacturaController::class, 'index'])->name('facturas');
     Route::get('/facturas/show/{factura}', [FacturaController::class, 'show'])->name('facturas.show');
+    Route::post('/facturas/pagar/{factura}', [FacturaController::class, 'pagar'])->name('facturas.pagar');
 
 });

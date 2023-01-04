@@ -16,13 +16,13 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 9; $i++) {
-            Ticket::create(
-                [
-                    'plato_id' => rand(1,8),
-                    'mesa_id' => rand(1,9),
-                ]
-            );
-        }
+        // for ($i=0; $i < 9; $i++) {
+        //     Ticket::create(
+        //         [
+        //             'plato_id' => rand(1,8),
+        //             'mesa_id' => rand(1,9),
+        //         ]
+        //     );
+        // }
     }
 }

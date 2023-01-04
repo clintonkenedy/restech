@@ -61,6 +61,11 @@ class TicketController extends Controller
         return view('tickets.cancelados', compact('tickets'));
     }
 
+    public function ticketsPagadoList()
+    {
+        $tickets = Ticket::all()->where('estado', 'Pagado');
+        return view('tickets.pagados', compact('tickets'));
+    }
     /**
      * Show the form for creating a new resource.
      *

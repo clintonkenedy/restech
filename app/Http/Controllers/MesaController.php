@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mesa;
 use App\Models\Plato;
+use App\Models\Ticket;
+use App\Models\Factura;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -27,9 +29,32 @@ class MesaController extends Controller
     }
     public function pedido_store(Mesa $mesa, Request $request)
     {
-        foreach ($request->input('pedidos') as $key) {
-            dd($key);
+        // dd($request->all());
+        $factura = new Factura;
+        $factura->save();
+        // dd($factura->id);
+
+        $pedidos = $request->input('pedidos');
+        foreach ($pedidos as $key) {
+            // $i = array_search(null, array_column($pedidos, 'cantidad'));
+            if (!is_null($key['cantidad'])) {
+                // unset($pedidos[$i]);
+                // dd($request->input('pedidos'));
+                // dd($key);
+                $ticket = new Ticket;
+                $ticket->plato_id = $key['plato'];
+                $ticket->mesa_id = $mesa->id;
+                $ticket->cantidad = $key['cantidad'];
+                $ticket->factura_id = $factura->id;
+                $ticket->save();
+
+            }
         }
+        $mesa->estado = "Ocupado";
+        $mesa->save();
+
+
+        return redirect('/mesas');
     }
 
     /**
@@ -39,7 +64,7 @@ class MesaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mesas.create');
     }
 
     /**
@@ -50,7 +75,11 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mesa = New Mesa;
+        $mesa->numero = $request->input('n_mesa');
+        $mesa->save();
+
+        return redirect('/mesas');
     }
 
     /**
@@ -85,6 +114,20 @@ class MesaController extends Controller
     public function update(Request $request, Mesa $mesa)
     {
         //
+    }
+    public function suspender(Mesa $mesa)
+    {
+        $mesa->estado = "Suspendido";
+        $mesa->save();
+
+        return redirect('/mesas');
+    }
+    public function activar(Mesa $mesa)
+    {
+        $mesa->estado = "Disponible";
+        $mesa->save();
+
+        return redirect('/mesas');
     }
 
     /**

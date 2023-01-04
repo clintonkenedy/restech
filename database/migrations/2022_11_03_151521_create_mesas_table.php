@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
             $table->string('numero');
-            $table->enum('estado',['Ocupado','Disponible']);
+            $table->enum('estado',['Ocupado','Disponible','Suspendido'])->default('Disponible');
             $table->timestamps();
         });
     }
