@@ -16,9 +16,25 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        $facturas = Factura::all();
+        $facturas = Factura::where("estado", "Pendiente")->get();
+        $tickets = Ticket::all();
 
-        return view('facturas.index', compact('facturas'));
+        return view('facturas.index', compact('facturas', 'tickets'));
+    }
+    public function pagadas()
+    {
+        $facturas = Factura::where("estado", "Pagado")->get();
+        $tickets = Ticket::all();
+
+        return view('facturas.pagados', compact('facturas', 'tickets'));
+    }
+
+    public function canceladas()
+    {
+        $facturas = Factura::where("estado", "Cancelado")->get();
+        $tickets = Ticket::all();
+
+        return view('facturas.cancelados', compact('facturas', 'tickets'));
     }
 
     /**
@@ -35,12 +51,9 @@ class FacturaController extends Controller
     {
         // dd($request->all());
         $factura->dni = $request->input('dni');
-        if (strlen($factura->nombres)>1) {
-            $factura->nombres = $request->input('nombres');
-        }
-        if (strlen($factura->celular)>1) {
-            $factura->celular = $request->input('celular');
-        }
+        $factura->nombres = $request->input('nombres');
+        $factura->celular = $request->input('celular');
+        $factura->estado = "Pagado";
 
 
 
@@ -59,6 +72,26 @@ class FacturaController extends Controller
         $factura->save();
         // dd($factura);
         return redirect('/facturas');
+    }
+
+    public function cancelar(Factura $factura)
+    {
+        $factura->estado = "Cancelado";
+
+
+        $tickets = Ticket::where("factura_id", $factura->id)->get();
+        foreach ($tickets as $ticket) {
+            $ticket->estado = "Cancelado";
+            $ticket->save();
+        }
+        $mesa_ocupada = Ticket::where("factura_id", $factura->id)->first();
+        $mesa = Mesa::find($mesa_ocupada->mesa_id);
+        $mesa->estado = "Disponible";
+        $mesa->save();
+        $factura->save();
+        // dd($factura);
+
+        return redirect('/facturas/canceladas');
     }
 
     /**

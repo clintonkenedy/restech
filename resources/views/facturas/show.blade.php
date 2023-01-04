@@ -56,10 +56,14 @@
                 {{-- <a href="{{route('facturas.pagar', $factura)}}" class="btn btn-lg btn-success">
                     Pagar
                 </a> --}}
+                @if ($factura->estado == "Pendiente")
+                <a href="{{route('facturas.cancelar', $factura)}}" class="btn btn-danger">Cancelar</a>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#m_pago">
                     <span class="fa fa-dollar"></span>
                     Pagar
                     </button>
+                @endif
+
             </div>
         </div>
     </div>

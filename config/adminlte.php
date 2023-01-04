@@ -386,10 +386,21 @@ return [
         ],
         ['header' => 'CAJA'],
         [
-            'text'       => 'Ver Facturas',
+            'text'       => 'Facturas Pendientes',
             'url'        => 'facturas',
             'icon'       => 'fa fa-fw fa-money',
         ],
+        [
+            'text'       => 'Facturas Pagadas',
+            'url'        => 'facturas/pagadas',
+            'icon'       => 'fa fa-fw fa-money',
+        ],
+        [
+            'text'       => 'Facturas Canceladas',
+            'url'        => 'facturas/canceladas',
+            'icon'       => 'fa fa-fw fa-money',
+        ],
+
         ['header' => 'TICKETS'],
         [
             'text'       => 'Ver Tickets',

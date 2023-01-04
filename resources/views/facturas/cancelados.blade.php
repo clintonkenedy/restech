@@ -5,23 +5,11 @@
 
 @section('content_header')
 <center>
-    <h2>FACTURAS PENDIENTES</h2>
+    <h2>FACTURAS CANCELADAS</h2>
 </center>
 @stop
 
 @section('content')
-{{-- <div class="row d-flex justify-content-between mb-4" >
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-3">
-        <div class="float-right">
-            <a href="{{route('platos.create')}}" class="btn btn-lg btn-success">
-                Registrar Nuevo Factura
-            </a>
-        </div>
-    </div>
-</div> --}}
 <div class="container">
     <div class="table-responsive">
         <table id="pendientes" class="table table-striped mt-2">
@@ -41,7 +29,7 @@
                     <td>{{$factura->dni}}</td>
                     <td>{{$factura->nombres}}</td>
                     <td>{{$factura->celular}}</td>
-                    <td> <span class="badge bg-warning">{{$factura->estado}}</span></td>
+                    <td> <span class="badge bg-danger">{{$factura->estado}}</span></td>
                     @php
                         $ticket = App\Models\Ticket::where("factura_id", $factura->id)->first();
                     @endphp

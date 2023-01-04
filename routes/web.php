@@ -78,7 +78,10 @@ Route::middleware([
 
     // FACTURAS
     Route::get('/facturas', [FacturaController::class, 'index'])->name('facturas');
+    Route::get('/facturas/pagadas', [FacturaController::class, 'pagadas'])->name('pagadas');
+    Route::get('/facturas/canceladas', [FacturaController::class, 'canceladas'])->name('canceladas');
     Route::get('/facturas/show/{factura}', [FacturaController::class, 'show'])->name('facturas.show');
     Route::post('/facturas/pagar/{factura}', [FacturaController::class, 'pagar'])->name('facturas.pagar');
+    Route::get('/facturas/cancelar/{factura}', [FacturaController::class, 'cancelar'])->name('facturas.cancelar');
 
 });
