@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre',50);
             $table->double('costo',4,2);
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

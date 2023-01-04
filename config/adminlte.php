@@ -372,6 +372,24 @@ return [
         //         ],
         //     ],
         // ],
+        ['header' => 'MENU'],
+        [
+            'text'       => 'Platos',
+            'url'        => 'platos',
+            'icon'       => 'fa fa-fw fa-ticket',
+        ],
+        ['header' => 'MESAS'],
+        [
+            'text'       => 'Pedidos',
+            'url'        => 'mesas',
+            'icon'       => 'fa fa-fw fa-ticket',
+        ],
+        ['header' => 'FACTURAS'],
+        [
+            'text'       => 'ver Facturas',
+            'url'        => 'facturas',
+            'icon'       => 'fa fa-fw fa-ticket',
+        ],
         ['header' => 'TICKETS'],
         [
             'text'       => 'Ver Tickets',

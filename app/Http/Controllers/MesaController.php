@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mesa;
+use App\Models\Plato;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MesaController extends Controller
@@ -14,7 +16,20 @@ class MesaController extends Controller
      */
     public function index()
     {
-        //
+        $mesas = Mesa::all();
+        return view('mesas.index', compact('mesas'));
+    }
+    public function pedido(Mesa $mesa)
+    {
+        $hoy = Carbon::now('America/Lima')->toDateString();
+        $platos = Plato::where('fecha', $hoy)->get();
+        return view('mesas.pedidos', compact('mesa', 'platos'));
+    }
+    public function pedido_store(Mesa $mesa, Request $request)
+    {
+        foreach ($request->input('pedidos') as $key) {
+            dd($key);
+        }
     }
 
     /**

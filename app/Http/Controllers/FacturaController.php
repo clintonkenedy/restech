@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Factura;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class FacturaController extends Controller
@@ -14,7 +15,9 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        //
+        $facturas = Factura::all();
+
+        return view('facturas.index', compact('facturas'));
     }
 
     /**
@@ -46,7 +49,9 @@ class FacturaController extends Controller
      */
     public function show(Factura $factura)
     {
-        //
+        // dd($factura);
+        $tickets = Ticket::where('factura_id', $factura->id)->get();
+        return view('facturas.show', compact('factura', 'tickets'));
     }
 
     /**
